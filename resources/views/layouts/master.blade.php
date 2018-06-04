@@ -33,6 +33,20 @@
                     <span class="nav-link-text">Home</span>
                 </a>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Users">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseUsers" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span class="nav-link-text">Users</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseUsers">
+                    <li>
+                        <a href="{{route('admin.users.index')}}">All Users</a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.users.create')}}">Create User</a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" href="charts.html">
                     <i class="fa fa-fw fa-area-chart"></i>
