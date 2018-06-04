@@ -9,4 +9,11 @@ class Photo extends Model
     //
     protected $fillable = [ 'file' ];
 
+    protected $uploads = '/images/';
+
+    //Accessor
+    public function getFileAttribute($photo) {
+
+        return $this->uploads .$photo;
+    }
 }

@@ -6,6 +6,18 @@
 
         <div class="row">
 
+            @if(Session::has('deleted_user'))
+                <p class="bg-danger">{{session('deleted_user')}}</p>
+            @elseif(Session::has('user_created'))
+                <p class="bg-success">{{session('user_created')}}</p>
+            @elseif(Session::has('updated_user'))
+                <p class="bg-success">{{session('updated_user')}}</p>
+            @endif
+
+        </div>
+
+        <div class="row">
+
             <div class="col-md-10 col-md-offset-1">
 
                 <h1>Users</h1>
@@ -14,6 +26,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Photo</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
@@ -27,7 +40,8 @@
                             @foreach($users as $user)
                                 <tr>
                                     <td>{{$user->id}}</td>
-                                    <td>{{$user->name}}</td>
+                                    <td><img height="50" width="50" src="{{$user->photo? $user->photo->file : '/images/user1.png'}}"></td>
+                                    <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role->name}}</td>
                                     <td>{{$user->is_active == 1 ? 'Active' : 'Not Active'}}</td>
