@@ -30,10 +30,10 @@
                             <tr>
                                 <td>{{$post->id}}</td>
                                 <td><img height="50" src="{{$post->photo ? $post->photo->file : '/images/contract.png'}}"></td>
-                                <td>{{$post->user->name}}</td>
+                                <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
                                 <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
                                 <td>{{$post->title}}</td>
-                                <td>{{str_limit($post->body, 20)}}</td>
+                                <td>{{str_limit($post->body, 20)}}<a href="{{route('admin.posts.show', $post->id)}}">show more</a></td>
                                 <td>{{$post->created_at->diffForHumans()}}</td>
                                 <td>{{$post->updated_at->diffForHumans()}}</td>
                             </tr>
