@@ -47,6 +47,20 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Posts">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePosts" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-file-text-o"></i>
+                    <span class="nav-link-text">Posts</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapsePosts">
+                    <li>
+                        <a href="{{route('admin.posts.index')}}">All Posts</a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.posts.create')}}">Create Posts</a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                 <a class="nav-link" href="charts.html">
                     <i class="fa fa-fw fa-area-chart"></i>
