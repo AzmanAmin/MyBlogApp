@@ -61,17 +61,19 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                <a class="nav-link" href="charts.html">
-                    <i class="fa fa-fw fa-area-chart"></i>
-                    <span class="nav-link-text">Charts</span>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categories">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCategories" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-list"></i>
+                    <span class="nav-link-text">Categories</span>
                 </a>
-            </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                <a class="nav-link" href="tables.html">
-                    <i class="fa fa-fw fa-table"></i>
-                    <span class="nav-link-text">Tables</span>
-                </a>
+                <ul class="sidenav-second-level collapse" id="collapseCategories">
+                    <li>
+                        <a href="{{route('admin.categories.index')}}">All Categories</a>
+                    </li>
+                    <li>
+                        <a href="{{route('admin.categories.create')}}">Create Categories</a>
+                    </li>
+                </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
