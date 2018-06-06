@@ -62,16 +62,22 @@
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categories">
-                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCategories" data-parent="#exampleAccordion">
+                <a class="nav-link" href="{{route('admin.categories.index')}}">
                     <i class="fa fa-fw fa-list"></i>
                     <span class="nav-link-text">Categories</span>
                 </a>
-                <ul class="sidenav-second-level collapse" id="collapseCategories">
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Media">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMedia" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-music"></i>
+                    <span class="nav-link-text">Media</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseMedia">
                     <li>
-                        <a href="{{route('admin.categories.index')}}">All Categories</a>
+                        <a href="{{route('admin.medias.index')}}">All Media</a>
                     </li>
                     <li>
-                        <a href="{{route('admin.categories.create')}}">Create Categories</a>
+                        <a href="{{route('admin.medias.create')}}">Upload Media</a>
                     </li>
                 </ul>
             </li>
