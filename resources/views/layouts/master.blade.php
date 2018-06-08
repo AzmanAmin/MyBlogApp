@@ -59,6 +59,9 @@
                     <li>
                         <a href="{{route('admin.posts.create')}}">Create Posts</a>
                     </li>
+                    <li>
+                        <a href="{{route('admin.comments.index')}}">Comments</a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categories">
