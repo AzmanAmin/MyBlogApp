@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".comment-reply-container .toggle-reply").click(function(){
+//                $("comment-reply").toggle();
+                $(this).next().show();
+
+            });
+        });
+    </script>
+
     <style>
         /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
         .row.content {height: 1500px}
@@ -15,6 +26,10 @@
         .sidenav {
             background-color: #f1f1f1;
             height: 100%;
+        }
+
+        .comment-reply {
+            display: none;
         }
 
         /* Set black background color, white text and some padding */
@@ -68,3 +83,4 @@
 
 </body>
 </html>
+

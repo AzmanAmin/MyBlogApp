@@ -20,6 +20,8 @@
                             <th>Photo</th>
                             <th>Status</th>
                             <th>Body</th>
+                            <th>Post Link</th>
+                            <th>Reply Link</th>
                             {{--<th>Created</th>--}}
                             {{--<th>Updated</th>--}}
                         </tr>
@@ -34,7 +36,9 @@
                                     <td>{{$comment->email}}</td>
                                     <td><img height="50" width="50" src="{{$comment->photo ? $comment->photo : '/images/chat.png'}}"></td>
                                     <td>{{$comment->is_active}}</td>
+                                    <td>{{str_limit($comment->body, 20)}}</td>
                                     <td><a href="{{route('home.post', $comment->post->id)}}">View Post</a></td>
+                                    <td><a href="{{route('admin.comment.replies.show', $comment->id)}}">View Replies</a></td>
                                     {{--<td>{{$comment->created_at->diffForHumans()}}</td>--}}
                                     {{--<td>{{$comment->updated_at->diffForHumans()}}</td>--}}
                                     <td>
