@@ -45,7 +45,9 @@ Route::group(['middleware'=>'admin'], function () {
 Route::group(['middleware'=>'auth'], function () {
 
     Route::post('comment/reply', 'CommentRepliesController@createReply');
-
+//    Route::post('comment/likes', 'LikesController@store');
+    Route::resource('comment/likes', 'LikesController');
+//    Route::post('comment/likes/edit', 'LikesController@update');
 });
 
 

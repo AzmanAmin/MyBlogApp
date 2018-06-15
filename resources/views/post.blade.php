@@ -12,8 +12,72 @@
     <img class="img-fluid rounded" height="300" width="500" src="{{$post->photo ? $post->photo->file : '/images/contract.png'}}">
     <hr>
     <p>{{$post->body}}</p>
+
     <hr>
+
+    {{--Like Button--}}
+    @if($likeState == 0)
+        {{--INSERT--}}
+        {!! Form::open(['method'=>'POST', 'action'=>'LikesController@store', 'files'=>true]) !!}
+
+            <input type="hidden" name="post_id" value="{{$post->id}}">
+
+        	<div class="form-group">
+        		{!! Form::submit('Like', ['class'=>'btn btn-success']) !!}
+        	</div>
+
+        {!! Form::close() !!}
+
+    @elseif($likeState == 1)
+        {{--UPDATE--}}
+        {!! Form::open(['method'=>'PATCH', 'action'=>['LikesController@update', $likeId]]) !!}
+
+            <input type="hidden" name="like" value="2">
+
+        	<div class="form-group">
+        		{!! Form::submit('Unlike', ['class'=>'btn btn-success']) !!}
+        	</div>
+
+        {!! Form::close() !!}
+
+    @elseif($likeState == 2)
+        {{--UPDATE--}}
+        {!! Form::open(['method'=>'PATCH', 'action'=>['LikesController@update', $likeId]]) !!}
+
+        <input type="hidden" name="like" value="1">
+
+        <div class="form-group">
+            {!! Form::submit('Like', ['class'=>'btn btn-success']) !!}
+        </div>
+
+        {!! Form::close() !!}
+
+    @endif
     <br>
+
+    <p>{{count($postLikes)}} people likes this post.</p>
+
+    @if(count($postLikes) > 0)
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Likes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($postLikes as $like)
+                    <tr>
+                        <td>{{$like->owner}}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
+    @endif
+
+    <hr>
+
 
     {{--Creating Comment Section--}}
     @if(Auth::check())

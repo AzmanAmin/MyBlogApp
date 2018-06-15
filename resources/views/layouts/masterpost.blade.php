@@ -18,6 +18,14 @@
         });
     </script>
 
+    {{--<script type="text/javascript">--}}
+        {{--var likes = 0;--}}
+        {{--function like() {--}}
+            {{--document.getElementById("show").innerHTML = likes;--}}
+            {{--likes=likes+1;--}}
+        {{--}--}}
+    {{--</script>--}}
+
     <style>
         /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
         .row.content {height: 1500px}

@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Requests\PostsCreateRequest;
 use App\Photo;
 use App\Post;
+use App\PostLike;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -114,6 +115,27 @@ class AdminPostsController extends Controller
         $post = Post::findOrFail($id);
         $comments = $post->comments()->whereIsActive(1)->get();
 
-        return view('post', compact('post', 'comments'));
+        $likes = $post->likes()->get();
+        $postLikes = $post->likes()->where('like', 1)->get();
+
+        $likeState = 0;
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            if (count($likes) > 0) {
+                foreach ($likes as $like) {
+                    if ($user->name == $like->owner) {
+                        if ($like->like == 1)
+                            $likeState = 1;
+                        else
+                            $likeState = 2;
+
+                        $likeId = $like->id;
+                    }
+                }
+            }
+        }
+
+        return view('post', compact('post', 'comments', 'likes', 'likeState', 'likeId', 'postLikes'));
     }
 }
