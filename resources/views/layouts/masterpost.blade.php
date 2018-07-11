@@ -40,6 +40,30 @@
             display: none;
         }
 
+        .collapsible {
+            background-color: #6481A2;
+            color: white;
+            cursor: pointer;
+            padding: 20px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #436387;
+        }
+
+        .contentMap {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #EAE8E8;
+        }
+
         /* Set black background color, white text and some padding */
         footer {
             background-color: #555;
