@@ -28,6 +28,11 @@
                 </div>
 
                 <div class="form-group">
+                    {!! Form::label('location', 'Location: ') !!}
+                    {!! Form::text('location', null, ['class'=>'form-control']) !!}
+                </div>
+
+                <div class="form-group">
                     {!! Form::label('body', 'Description: ') !!}
                     {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
                 </div>

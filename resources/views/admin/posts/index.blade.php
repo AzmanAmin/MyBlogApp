@@ -18,6 +18,7 @@
                         <th>Owner</th>
                         <th>Category</th>
                         <th>Title</th>
+                        <th>Location</th>
                         <th>Content</th>
                         <th>Comments</th>
                         <th>Created</th>
@@ -34,6 +35,7 @@
                                 <td><a href="{{route('admin.posts.edit', $post->id)}}">{{$post->user->name}}</a></td>
                                 <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
                                 <td>{{$post->title}}</td>
+                                <td>{{$post->location}}</td>
                                 {{--<td>{{str_limit($post->body, 20)}}<a href="{{route('admin.posts.show', $post->id)}}">show more</a></td>--}}
                                 <td><a href="{{route('home.post', $post->id)}}">Show Post</a></td>
                                 <td><a href="{{route('admin.comments.show', $post->id)}}">View Comments</a></td>

@@ -11,6 +11,8 @@
     <hr>
     <img class="img-fluid rounded" height="300" width="500" src="{{$post->photo ? $post->photo->file : '/images/contract.png'}}">
     <hr>
+    <p><B>Location: </B>{{$post->location}}</p>
+    <hr>
     <p>{{$post->body}}</p>
 
     <br>
@@ -25,7 +27,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Location Distance</h4>
+                        <h4 class="modal-title">Route to <I style="color: #2a70e0">{{$post->location}}</I></h4>
                     </div>
                     <div class="modal-body">
                         
@@ -51,6 +53,7 @@
                             var markers = [];
 
                             function initMap() {
+
                                 var directionsDisplay = new google.maps.DirectionsRenderer;
                                 var directionsService = new google.maps.DirectionsService;
 
@@ -70,10 +73,8 @@
                                             lng: position.coords.longitude
                                         };
 
-                                        var infowindow1 = new google.maps.InfoWindow();
-
+                                        infowindow = new google.maps.InfoWindow();
                                         markers = [];
-                                        // createMarker(pos);
                                         var marker1 = new google.maps.Marker({
                                             position: pos, 
                                             map: map,
@@ -82,14 +83,12 @@
                                         markers.push(marker1);
 
                                         google.maps.event.addListener(marker1, 'click', function() {
-                                            infowindow1.setContent('My Location');
-                                            infowindow1.open(map, this);
+                                            infowindow.setContent('My Location');
+                                            infowindow.open(map, this);
                                         });
 
-                                        infowindow = new google.maps.InfoWindow();
-
                                         var request = {
-                                            query: 'Foys Lake Amusement World,Chittagong',
+                                            query: '{{$post->location}}',
                                             fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
                                         };
                                         var service = new google.maps.places.PlacesService(map);
@@ -105,7 +104,6 @@
                                     handleLocationError(false, infoWindow, map.getCenter());
                                 }
 
-                                // directionsDisplay.setMap(map);
                                 calculateAndDisplayRoute(directionsService, directionsDisplay);
                                 document.getElementById('mode').addEventListener('change', function() {
                                     calculateAndDisplayRoute(directionsService, directionsDisplay);
