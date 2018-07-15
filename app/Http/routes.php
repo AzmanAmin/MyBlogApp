@@ -1,5 +1,10 @@
 <?php
 
+use App\Notifications\DatabaseNotification;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Collection;
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -49,6 +54,27 @@ Route::group(['middleware'=>'auth'], function () {
     Route::resource('comment/likes', 'LikesController');
 //    Route::post('comment/likes/edit', 'LikesController@update');
 });
+
+
+Route::get('markasread', function() {
+    Auth::user()->notifications->markAsRead();
+    return redirect()->back();
+})->name('markAsRead');
+
+
+Route::get('notifications', function() {
+    $myNotification = Auth::user()->notifications->all();
+    // $myNotification = 'baal;
+    return view('notifications', compact('myNotification'));
+})->name('allNotifications');
+
+
+
+
+
+
+
+
 
 
 

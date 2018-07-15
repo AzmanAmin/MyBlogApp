@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\DatabaseNotification;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Collection;
 
 class PostCommentsController extends Controller
 {
@@ -67,6 +70,14 @@ class PostCommentsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $authUser = Auth::user()->name;
+
+        $comment = Comment::findOrFail($id);
+        $post = $comment->post;
+        $user = $post->user;
+        $letter = collect(['title'=>'Comment ya', 'body'=>$authUser.' commented on your post.', 'post_id'=>$post->id]);
+        $user->notify(new DatabaseNotification($letter));
+
         Comment::findOrFail($id)->update($request->all());
         return redirect()->back();
     }
